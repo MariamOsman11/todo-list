@@ -124,7 +124,6 @@ To run tests, run the following command:
 - [LinkedIn](https://www.linkedin.com/in/marian-isman-a57b75226/)
 
 - GitHub:https://github.com/Kanyorok
-- [LinkedIn](https://github.com/Kanyorok)
 
 
 

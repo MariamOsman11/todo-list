@@ -28,11 +28,7 @@ const tasklist = [
     completed: 'true',
     index: 5,
   },
-  {
-    description: 'make sure your disturn BIN ',
-    completed: 'true',
-    index: 5,
-  },
+  
 ];
 
 const displayTaskPage = () => {
