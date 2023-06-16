@@ -23,7 +23,7 @@ class CreatetodoList {
           <i id="delete" class="fa-solid fa-trash-can"></i>
           </div>
           `;
-          TaskContainer.appendChild(listItem);
+    TaskContainer.appendChild(listItem);
   };
 
   static loadFromLocalStorage() {

@@ -41,6 +41,7 @@ h1 {
   height: 2rem;
   padding: 2%;
 }
+
 .fa-plus {
   color: gray;
   position: absolute;
@@ -52,7 +53,6 @@ h1 {
 .fa-plus:hover {
   color: #7bc24c;
 }
-
 
 ul {
   padding: 0;
@@ -96,6 +96,7 @@ li {
 .fa-pen:hover {
   color: rgb(4, 255, 4);
 }
+
 .editInput {
   border: none;
   height: 3rem;
