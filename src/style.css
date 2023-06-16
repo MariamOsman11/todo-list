@@ -41,6 +41,18 @@ h1 {
   height: 2rem;
   padding: 2%;
 }
+.fa-plus {
+  color: gray;
+  position: absolute;
+  margin-top: 97.5px;
+  right: 32%;
+  cursor: pointer;
+}
+
+.fa-plus:hover {
+  color: #7bc24c;
+}
+
 
 ul {
   padding: 0;
@@ -67,11 +79,6 @@ li {
   cursor: pointer;
 }
 
-.fa-ellipsis {
-  margin-top: 1.25rem;
-  rotate: 90deg;
-}
-
 .clearBtn {
   border: none;
   height: 4rem;
@@ -84,4 +91,23 @@ li {
 
 .clearBtn:hover {
   background-color: cadetblue;
+}
+
+.fa-pen:hover {
+  color: rgb(4, 255, 4);
+}
+.editInput {
+  border: none;
+  height: 3rem;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background: rgb(247, 251, 255);
+  border-radius: 5%;
+  margin-left: 3%;
+}
+
+.checkEdit {
+  background-color: #cedce1;
+  border: none;
+  color: black;
 }

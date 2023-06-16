@@ -1,50 +1,64 @@
 import './style.css';
+import {
+  displayTasksOnWebPage, addItem, removeItem, storageInfo,
+} from './AddandRemove.js';
 
 const listContainer = document.querySelector('.list-Container');
+const addInTodo = document.querySelector('.fa-plus');
 
-const tasklist = [
-  {
-    description: 'drink water',
-    completed: 'true',
-    index: 1,
-  },
-  {
-    description: 'go to hospital',
-    completed: 'false',
-    index: 2,
-  },
-  {
-    description: 'eat healthy',
-    completed: 'true',
-    index: 3,
-  },
-  {
-    description: 'do you like strawberries',
-    completed: 'false',
-    index: 4,
-  },
-  {
-    description: 'Dont forget to meditate ',
-    completed: 'true',
-    index: 5,
-  },
 
-];
+window.addEventListener('load', () => {
+  displayTasksOnWebPage();
+});
 
-const displayTaskPage = () => {
-  tasklist.forEach((list) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `
-        <div class="list">
-        <input type="checkbox" name="" id="">
-        <p>${list.description}</p>
-        </div>
+addInTodo.addEventListener('click', (e) => {
+  e.preventDefault();
+  addItem();
+});
 
-        <div class="trash"><i class="fa-solid fa-ellipsis"></i></div>
-        
-        `;
-    listContainer.appendChild(listItem);
-  });
-};
+listContainer.addEventListener('click', (e) => {
+  if (e.target.id === 'delete') {
+    removeItem(e);
+  }
+const checkMark = document.createElement('button');
+  const insertInput = document.createElement('input');
+  if (e.target.id === 'pen') {
+    e.target.addEventListener('click', () => {
+      insertInput.remove();
+      checkMark.remove();
+    });
 
-displayTaskPage();
+
+  const top = e.target.parentElement.parentElement.children[0];
+  const targetElement = e.target.parentElement.parentElement.children[0].children[1];
+
+  checkMark.className = 'checkEdit';
+  checkMark.innerHTML = '<i class="fa-solid fa-check fa-xl"></i>';
+  insertInput.placeholder = 'Edit your task';
+  insertInput.type = 'text';
+  insertInput.className = 'editInput';
+  top.appendChild(insertInput);
+  top.appendChild(checkMark);
+
+  const one = e.target.parentElement.parentElement.children[0].children[3];
+
+  if (one.className === 'checkEdit') {
+    const two = e.target.parentElement.parentElement.children[0].children[2];
+    one.onclick = function check(e) {
+      if (!two.value) {
+        const three = e.target.parentElement.parentElement.parentElement.children[0].children[1];
+        targetElement.innerHTML = three.innerHTML;
+        insertInput.remove();
+        checkMark.remove();
+      } else {
+        targetElement.innerHTML = two.value;
+        insertInput.remove();
+        checkMark.remove();
+        const Info = storageInfo();
+        Info[targetElement.id - 1].description = two.value;
+        localStorage.setItem('TasksInfo', JSON.stringify(Info));
+      }
+    };
+  }
+}
+});
