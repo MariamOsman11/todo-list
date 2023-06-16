@@ -28,7 +28,7 @@ const tasklist = [
     completed: 'true',
     index: 5,
   },
-  
+
 ];
 
 const displayTaskPage = () => {
