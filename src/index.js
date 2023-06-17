@@ -1,14 +1,15 @@
 import './style.css';
+
 import {
-  displayTasksOnWebPage, addItem, removeItem, storageInfo,
+  displayTasksOnWebPage, addItem, removeItem,
+  storageInfo,
 } from './addandremove.js';
 
-const listContainer = document.querySelector('.list-Container');
-const addInTodo = document.querySelector('.fa-plus');
+import cleartasksDone from './interactive.js';
 
-window.addEventListener('load', () => {
-  displayTasksOnWebPage();
-});
+const listContainer = document.querySelector('.list-Container');
+const clearcompleteTasks = document.querySelector('.clearBtn');
+const addInTodo = document.querySelector('.fa-plus');
 
 addInTodo.addEventListener('click', (e) => {
   e.preventDefault();
@@ -39,7 +40,6 @@ listContainer.addEventListener('click', (e) => {
     top.appendChild(checkMark);
 
     const one = e.target.parentElement.parentElement.children[0].children[3];
-
     if (one.className === 'checkEdit') {
       const two = e.target.parentElement.parentElement.children[0].children[2];
       one.onclick = function check(e) {
@@ -59,4 +59,29 @@ listContainer.addEventListener('click', (e) => {
       };
     }
   }
+  if (e.target.className === 'checkbox') {
+    const checkBox = e.target.parentElement.parentElement.children[0].children[0];
+    const checkStatus = e.target.parentElement.parentElement.children[0].children[1];
+
+    if (checkBox.checked === true) {
+      const Info = JSON.parse(localStorage.getItem('TasksInfo'));
+      Info[checkStatus.id - 1].completed = true;
+      localStorage.setItem('TasksInfo', JSON.stringify(Info));
+      checkStatus.classList.add('Complete');
+    } else {
+      const Info = JSON.parse(localStorage.getItem('TasksInfo'));
+      Info[checkStatus.id - 1].completed = false;
+      localStorage.setItem('TasksInfo', JSON.stringify(Info));
+      checkStatus.classList.remove('Complete');
+    }
+  }
+});
+
+clearcompleteTasks.addEventListener('click', (e) => {
+  cleartasksDone(e);
+  window.location.reload();
+});
+
+window.addEventListener('load', () => {
+  displayTasksOnWebPage();
 });
