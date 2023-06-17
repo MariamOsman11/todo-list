@@ -54,7 +54,7 @@ class CreatetodoList {
       target.parentElement.remove();
       const listItems = document.querySelectorAll('.lists');
       listItems.forEach((item, id) => {
-        item.id = id+1;
+        item.id = id + 1;
       });
     }
   }

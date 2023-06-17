@@ -31,7 +31,6 @@ export function cleartasksDone(e) {
     listHolder[i].id = tempStore[i].id;
     listHolder[i].children[0].children[0].id = tempStore[i].id;
     listHolder[i].children[0].children[1].id = tempStore[i].id;
-  
   }
 }
 export function checkBoxclicked(e) {

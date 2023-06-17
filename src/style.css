@@ -80,6 +80,7 @@ li .list-Container {
   align-content: center;
   cursor: pointer;
 }
+
 .trash .fa-pen {
   margin-left: 10px;
 }
@@ -121,5 +122,4 @@ li .list-Container {
 .Complete,
 .tickedItem {
   color: rgb(68, 94, 240);
-  
 }

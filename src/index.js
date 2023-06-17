@@ -5,7 +5,7 @@ import {
   storageInfo,
 } from './addandremove.js';
 
-import {cleartasksDone, checkBoxclicked} from './interactive.js';
+import { cleartasksDone, checkBoxclicked } from './interactive.js';
 
 const listContainer = document.querySelector('.list-Container');
 const clearcompleteTasks = document.querySelector('.clearBtn');
@@ -72,4 +72,3 @@ clearcompleteTasks.addEventListener('click', (e) => {
 window.addEventListener('load', () => {
   displayTasksOnWebPage();
 });
-
