@@ -66,7 +66,7 @@ li {
   border-bottom: 2px solid rgba(180, 0, 0, 0.6);
 }
 
-.list {
+li .list-Container {
   display: flex;
 }
 
@@ -76,7 +76,13 @@ li {
 
 .trash {
   margin-right: 2%;
+  margin-top: 3%;
+  align-content: center;
   cursor: pointer;
+}
+
+.trash .fa-pen {
+  margin-left: 10px;
 }
 
 .clearBtn {
@@ -108,7 +114,12 @@ li {
 }
 
 .checkEdit {
-  background-color: #cedce1;
+  background-color: rgb(187, 179, 179);
   border: none;
   color: black;
+}
+
+.Complete,
+.tickedItem {
+  color: rgb(68, 94, 240);
 }

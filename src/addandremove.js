@@ -7,14 +7,14 @@ class CreatetodoList {
     this.id = id;
   }
 
-  static displayTasks = (task) => {
+  static displayTasks = (task, oneTwo, three) => {
     const listItem = document.createElement('li');
     listItem.id = task.id;
     listItem.className = 'lists';
     listItem.innerHTML = `
           <div class="list-Container">
-          <input type="checkbox" name="" id="${task.id}">
-          <p id="${task.id}">${task.description}</p>
+          <input type="checkbox" name="" id="${task.id}" class="checkbox" ${oneTwo}>
+          <p class="${three}" id="${task.id}">${task.description}</p>
           </div>
           
           <div class="trash">
@@ -23,6 +23,7 @@ class CreatetodoList {
           <i id="delete" class="fa-solid fa-trash-can"></i>
           </div>
           `;
+
     TaskContainer.appendChild(listItem);
   };
 
@@ -39,15 +40,22 @@ class CreatetodoList {
 
   static displayTasksOnPage() {
     const Tasks = CreatetodoList.loadFromLocalStorage();
-
     Tasks.forEach((task) => {
-      CreatetodoList.displayTasks(task);
+      if (task.completed === true) {
+        CreatetodoList.displayTasks(task, 'checked', 'tickedItem');
+      } else {
+        CreatetodoList.displayTasks(task, '/', 'none');
+      }
     });
   }
 
   static removeBookFromPage(target) {
     if (target.classList.contains('trash')) {
       target.parentElement.remove();
+      const listItems = document.querySelectorAll('.lists');
+      listItems.forEach((item, id) => {
+        item.id = id + 1;
+      });
     }
   }
 
