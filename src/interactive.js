@@ -1,6 +1,6 @@
 import { storageInfo } from './addandremove.js';
 
-export default function cleartasksDone(e) {
+export function cleartasksDone(e) {
   const store = [];
   let tempStore = storageInfo();
   tempStore.forEach((data) => {
@@ -17,7 +17,6 @@ export default function cleartasksDone(e) {
   }
 
   const listHolder = e.target.parentElement.children[3].children;
-
   for (let i = 0; i < listHolder.length; i += 1) {
     const innerlistHolder = e.target.parentElement.children[3].children[i].children[0].children[0];
     if (innerlistHolder.checked === true) {
@@ -32,5 +31,22 @@ export default function cleartasksDone(e) {
     listHolder[i].id = tempStore[i].id;
     listHolder[i].children[0].children[0].id = tempStore[i].id;
     listHolder[i].children[0].children[1].id = tempStore[i].id;
+  
+  }
+}
+export function checkBoxclicked(e) {
+  const checkBox = e.target.parentElement.parentElement.children[0].children[0];
+  const checkStatus = e.target.parentElement.parentElement.children[0].children[1];
+
+  if (checkBox.checked === true) {
+    const Info = JSON.parse(localStorage.getItem('TasksInfo'));
+    Info[checkStatus.id - 1].completed = true;
+    localStorage.setItem('TasksInfo', JSON.stringify(Info));
+    checkStatus.classList.add('Complete');
+  } else {
+    const Info = JSON.parse(localStorage.getItem('TasksInfo'));
+    Info[checkStatus.id - 1].completed = false;
+    localStorage.setItem('TasksInfo', JSON.stringify(Info));
+    checkStatus.classList.remove('Complete');
   }
 }

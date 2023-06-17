@@ -52,6 +52,10 @@ class CreatetodoList {
   static removeBookFromPage(target) {
     if (target.classList.contains('trash')) {
       target.parentElement.remove();
+      const listItems = document.querySelectorAll('.lists');
+      listItems.forEach((item, id) => {
+        item.id = id+1;
+      });
     }
   }
 

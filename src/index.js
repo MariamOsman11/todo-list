@@ -5,7 +5,7 @@ import {
   storageInfo,
 } from './addandremove.js';
 
-import cleartasksDone from './interactive.js';
+import {cleartasksDone, checkBoxclicked} from './interactive.js';
 
 const listContainer = document.querySelector('.list-Container');
 const clearcompleteTasks = document.querySelector('.clearBtn');
@@ -60,20 +60,7 @@ listContainer.addEventListener('click', (e) => {
     }
   }
   if (e.target.className === 'checkbox') {
-    const checkBox = e.target.parentElement.parentElement.children[0].children[0];
-    const checkStatus = e.target.parentElement.parentElement.children[0].children[1];
-
-    if (checkBox.checked === true) {
-      const Info = JSON.parse(localStorage.getItem('TasksInfo'));
-      Info[checkStatus.id - 1].completed = true;
-      localStorage.setItem('TasksInfo', JSON.stringify(Info));
-      checkStatus.classList.add('Complete');
-    } else {
-      const Info = JSON.parse(localStorage.getItem('TasksInfo'));
-      Info[checkStatus.id - 1].completed = false;
-      localStorage.setItem('TasksInfo', JSON.stringify(Info));
-      checkStatus.classList.remove('Complete');
-    }
+    checkBoxclicked(e);
   }
 });
 
@@ -85,3 +72,4 @@ clearcompleteTasks.addEventListener('click', (e) => {
 window.addEventListener('load', () => {
   displayTasksOnWebPage();
 });
+
