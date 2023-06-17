@@ -112,3 +112,8 @@ li {
   border: none;
   color: black;
 }
+
+.Complete,
+.tickedItem {
+  color: rgb(68, 94, 240);
+}
